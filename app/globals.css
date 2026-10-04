@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #0d0b0a;
+  --color-coal: #151210;
+  --color-gold: #c8a45d;
+  --color-gold-2: #d4b66a;
+  --color-gold-3: #e0c47a;
+  --color-cream: #f4ebdd;
+  --color-brown: #6e5035;
+  --color-mute: #a39482;
+  --font-display: var(--f-display), Georgia, serif;
+  --font-body: var(--f-body), system-ui, sans-serif;
+  --font-arabic: var(--f-ar), "Noto Sans Arabic", sans-serif;
+}
+
+html { scroll-behavior: smooth; background: var(--color-ink); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body { background: var(--color-ink); color: var(--color-cream); font-family: var(--font-body); overflow-x: hidden; padding-bottom: env(safe-area-inset-bottom); }
+:focus-visible { outline: 2px solid var(--color-gold-3); outline-offset: 3px; border-radius: 4px; }
+
+/* Very subtle eight-point-star lattice, used on the hero and grill section only */
+.pattern { position: relative; isolation: isolate; }
+.pattern::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cg fill='none' stroke='%23C8A45D' stroke-width='.8'%3E%3Crect x='16' y='16' width='32' height='32'/%3E%3Crect x='16' y='16' width='32' height='32' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E");
+}
+.rise { animation: rise .8s ease-out both; }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
