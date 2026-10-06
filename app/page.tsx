@@ -10,9 +10,11 @@ export default function Page() {
     <>
       <Header />
       <CategoryNav items={navItems} />
-      <main>
-        <GrillSection />
-        {menu.map((c) => <MenuSection key={c.id} category={c} />)}
+      <main className="pattern">
+        {/* <GrillSection />*/}
+        {menu.map((c) => (
+          <MenuSection key={c.id} category={c} />
+        ))}
       </main>
       <Footer />
     </>

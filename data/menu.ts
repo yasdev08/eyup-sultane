@@ -3,28 +3,28 @@
 export type Variant = { label: string; price: number };
 export type MenuItem = { id: string; name: string; arabicName?: string; description?: string; price?: number; variants?: Variant[]; note?: string; image?: string };
 export type MenuCategory = { id: string; name: string; arabicName?: string; note?: string; items: MenuItem[] };
-export type Platter = { name: string; arabicName: string; sizes: { persons: string; price?: number; image: string }[] };
+export type Platter = { name: string; arabicName: string; sizes: { persons: string; price?: number; image?: string }[] };
 
 let n = 0;
 const it = (name: string, arabicName?: string, price?: number, extra: Partial<MenuItem> = {}): MenuItem => ({ id: `i${n++}`, name, arabicName, price, ...extra });
 
 export const platters: Platter[] = [
   // TODO: the 4–5 personnes price is hidden by glare on the photo (starts "1300…"). Confirm with the owner.
-  { name: "Grillades Eyüp Sultan", arabicName: "مشكل أيوب سلطان", sizes: [{ persons: "4-5", image: "/images/dishes/grill-eyup-4-5.jpg" }, { persons: "9-10", price: 24500, image: "/images/dishes/grill-eyup-9-10.jpg" }] },
-  { name: "Grillades Mix", arabicName: "مشاوي ميكس", sizes: [{ persons: "4-5", price: 9500, image: "/images/dishes/grill-mix-4-5.jpg" }, { persons: "9-10", price: 18500, image: "/images/dishes/grill-mix-9-10.jpg" }] },
+  { name: "Grillades Eyüp Sultan", arabicName: "مشكل أيوب سلطان", sizes: [{ persons: "4-5", /*image: "/images/dishes/grill-eyup-4-5.jpg"*/ }, { persons: "9-10", price: 24500, image: "/images/dishes/grill-eyup-9-10.jpg" }] },
+  { name: "Grillades Mix", arabicName: "مشاوي ميكس", sizes: [{ persons: "4-5", price: 9500,/* image: "/images/dishes/grill-mix-4-5.jpg" */}, { persons: "9-10", price: 18500, image: "/images/dishes/grill-mix-9-10.jpg" }] },
 ];
 export const accompaniments = ["Riz", "Borghoul", "Frites", "Crème à l'ail", "Coleslaw", "Salade Ezme"];
 
 export const menu: MenuCategory[] = [
-  { id: "salades", name: "Salades", arabicName: "السلطات", items: [
-    it("Salade verte", "سلطة خضراء", 500), it("Salade poulet", "سلطة دجاج", 800), it("Salade fetouche", "سلطة فتوش", 600),
-    it("Salade de thon", "سلطة تونة", 700), it("Hmiss", "سلطة مشوية", 350), it("Coleslaw", "كول سلو", 400),
-    it("Menu burger viande", "منيو برغر لحم", 950), it("Menu burger poulet", "منيو برغر دجاج", 750),
-  ] },
+  // { id: "salades", name: "Salades", arabicName: "السلطات", },
   { id: "entrees-froides", name: "Entrées froides", arabicName: "مقبلات باردة", items: [
     it("Mtabel betrave", "متبل شمندر", 450), it("Homous", "حمص", 500), it("Mtabel Aubergine", "متبل باذنجان", 500),
     it("Muhammara", "محمرة", 450), it("Lebna", "لبنة", 500), it("Warak Enab", "ورق عنب", 600),
     it("Salade Ezme", "أزمي سلطة", 350), it("Mezza", "مازة (مشكل مقبلات)", 1100),
+    
+    it("Salade verte", "سلطة خضراء", 500), it("Salade poulet", "سلطة دجاج", 800), it("Salade fetouche", "سلطة فتوش", 600),
+    it("Salade de thon", "سلطة تونة", 700), it("Hmiss", "سلطة مشوية", 350), it("Coleslaw", "كول سلو", 400),
+    it("Menu burger viande", "منيو برغر لحم", 950), it("Menu burger poulet", "منيو برغر دجاج", 750),
   ] },
   { id: "entrees-chaudes", name: "Entrées chaudes", arabicName: "مقبلات ساخنة", items: [
     it("Frites", "بطاطا", 300), it("Riz", "أرز", 300), it("Borghoul", "برغل", 300), it("Légumes cuit", "خضار مسلوقة", 600),
@@ -80,7 +80,7 @@ export const menu: MenuCategory[] = [
 export const navItems = [{ id: "grillades", label: "Grillades" }, ...menu.map((c) => ({ id: c.id, label: c.name }))];
 
 // Dish photos cropped from the printed photo menu. Key: "category-id/item name" -> file in public/images/dishes.
-const photos: Record<string, string> = {
+/*const photos: Record<string, string> = {
   "salades/Salade verte": "salade-verte", "salades/Salade poulet": "salade-poulet", "salades/Salade fetouche": "salade-fetouche",
   "salades/Salade de thon": "salade-thon", "salades/Hmiss": "hmiss", "salades/Coleslaw": "coleslaw",
   "salades/Menu burger viande": "menu-burger-viande", "salades/Menu burger poulet": "menu-burger-poulet",
@@ -94,4 +94,4 @@ const photos: Record<string, string> = {
   // Same dish names on the second menu, reusing the same photo:
   "entrez/Frites": "frites", "entrez/Falafel": "falafel",
 };
-menu.forEach((c) => c.items.forEach((i) => { const f = photos[`${c.id}/${i.name}`]; if (f) i.image = `/images/dishes/${f}.jpg`; }));
+menu.forEach((c) => c.items.forEach((i) => { const f = photos[`${c.id}/${i.name}`]; if (f) i.image = `/images/dishes/${f}.jpg`; }));*/
