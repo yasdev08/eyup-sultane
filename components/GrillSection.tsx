@@ -37,13 +37,13 @@ export default function GrillSection() {
                 className="overflow-hidden rounded-md border border-gold/40 bg-ink"
               >
                 <div className="relative aspect-[12/5] bg-coal">
-                  <Image
+                  {/*<Image
                     src={s.image}
                     alt={`${p.name}, ${s.persons} personnes`}
                     fill
                     sizes="(min-width: 768px) 480px, 100vw"
                     className="object-cover"
-                  />
+                  />*/}
                 </div>
                 <div className="flex items-end justify-between gap-4 p-5">
                   <div>
